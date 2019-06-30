@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="container">
+      <mdb-card>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>Register new Opportunitie</h4>
+          </mdb-card-title>
+
+          <form [formGroup]="opportunitieForm" novalidate class="text-center border border-light p-5">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="view overlay">
+                  <img
+                    src="{{ imgPlaceholder }}"
+                    class="img-fluid img-thumbnail"
+                    alt="Responsive image"
+                  />
+
+                  <div class="mask flex-center waves-effect waves-light">
+                    <button (click)="fileUpload.click()" mdbBtn color="primary" mdbWavesEffect>Upload</button>
+                  </div>
+
+                  <input type="file" (change)="setImagePreview($event)" #fileUpload class="d-none" />
+
+                </div>
+              </div>
+              <div class="col-md-8">
+                <p class="h4 mb-4">Opportunitie Info</p>
+
+                <!-- Email -->
+                <input
+                  type="text"
+                  class="form-control mb-4"
+                  placeholder="Title"
+                  formControlName="title"
+                />
+
+                <!-- Password -->
+                <textarea
+                  class="form-control mb-4"
+                  placeholder="Description"
+                  formControlName="description"
+                ></textarea>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      placeholder="OLD PRICE"
+                      class="form-control mb-4"
+                      formControlName="oldPrice"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      placeholder="NEW PRICE"
+                      class="form-control mb-4"
+                      formControlName="newPrice"
+                    />
+                  </div>
+                </div>
+
+                <button (click)="onSubmit($event)" [disabled]="opportunitieForm.invalid || opportunitieForm.prestine" mdbBtn color="primary" mdbWavesEffect>REGISTER</button>
+              </div>
+            </div>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+</div>
+
+
+<div mdbModal #modalRef #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Alert</h4>
+      </div>
+      <div class="modal-body">
+        New OPPORTUNITIE has been success saved!
+      </div>
+    </div>
+  </div>
+</div>
