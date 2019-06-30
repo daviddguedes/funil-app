@@ -1,0 +1,17 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key">{{question.label}}</label>
+
+  <div [ngSwitch]="question.controlType">
+
+      <input *ngSwitchCase="'textbox'" mdbInput [formControlName]="question.key"
+            [id]="question.key" [type]="question.type" class="form-control">
+
+    <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key" class="browser-default custom-select">
+      <option [ngValue]="null">Select One</option>
+      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+    </select>
+
+  </div>
+
+  <div class="errorMessage" *ngIf="!isValid && (isDirty || isTouched)">{{question.label}} is required</div>
+</div>

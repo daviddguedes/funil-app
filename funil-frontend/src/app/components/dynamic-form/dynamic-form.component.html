@@ -1,0 +1,25 @@
+<div>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="form"
+  >
+    <div *ngFor="let question of questions">
+      <app-question [question]="question" [form]="form"></app-question>
+    </div>
+
+    <button
+      [disabled]="!form.valid"
+      mdbBtn
+      color="info"
+      block="true"
+      class="my-4"
+      type="submit"
+    >
+      Sign in
+    </button>
+  </form>
+
+  <div *ngIf="payLoad" class="form-row">
+    <strong>Saved the following values</strong><br />{{ payLoad }}
+  </div>
+</div>
