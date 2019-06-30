@@ -18,3 +18,4 @@ use Illuminate\Http\Request;
 // });
 
 Route::resource('customers', 'CustomersController');
+Route::resource('opportunities', 'OpportunitiesController');
