@@ -12,7 +12,6 @@ import { QuestionControlService } from "./../../services/question/question-contr
 export class DynamicFormComponent implements OnInit {
   @Input() questions: QuestionBase<any>[] = [];
   form: FormGroup;
-  payLoad = "";
 
   constructor(private qcs: QuestionControlService) {}
 
@@ -21,6 +20,6 @@ export class DynamicFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.payLoad = JSON.stringify(this.form.value);
+    console.log(this.form.value);
   }
 }

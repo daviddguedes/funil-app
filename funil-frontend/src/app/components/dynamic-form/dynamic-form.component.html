@@ -10,16 +10,12 @@
     <button
       [disabled]="!form.valid"
       mdbBtn
-      color="info"
+      color="indigo"
       block="true"
       class="my-4"
       type="submit"
     >
-      Sign in
+      Register
     </button>
   </form>
-
-  <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br />{{ payLoad }}
-  </div>
 </div>
