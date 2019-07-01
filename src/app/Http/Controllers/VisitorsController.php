@@ -1,14 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Exception;
-use App\Models\Opportunitie;
+use App\Models\Visitors;
 
-class OpportunitiesController extends Controller
+class VisitorsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -18,65 +17,52 @@ class OpportunitiesController extends Controller
     {
         //
     }
-    
-    
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'thumbUrl' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-        
-        try {            
-            $opportunitie = Opportunitie::create($request->except('thumbUrl'));
-            
-            $path = $request->file('thumbUrl')->store('');
-            $storagePath  = Storage::disk('public')->url($path);
-            
-            $opportunitie->thumbUrl = $path;
-            $saved = $opportunitie->save();            
-            
+        try {
+            $visitor = Visitors::create($request->all());
             return response()->json([
-                'result' => $opportunitie
+                'result' => $visitor
             ]);
         } catch (Exception $e) {
-            return response()->json(['error' => 'An error ocurred.'], 400);
-        };
+            return response()->json(['error' => 'An error ocurred'], 400);
+        }
     }
-    
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
     }
-    
-    
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

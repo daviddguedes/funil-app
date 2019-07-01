@@ -63,6 +63,7 @@ export class OpportunitiesComponent implements OnInit {
       response => {
         this.opportunitieForm.reset();
         this.basicModal.show();
+
       },
       error => {
         console.log("error", error);
