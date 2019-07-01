@@ -6,19 +6,23 @@ import {
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ApiService {
+  API_URL = "http://localhost:8080/api";
 
-  API_URL = 'http://localhost:8080/api'
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   public storeOpportunitie(data) {
     const headers = new HttpHeaders();
     return this.http.post(`${this.API_URL}/opportunities`, data, {
+      headers
+    });
+  }
+
+  public storeVisitor(data) {
+    const headers = new HttpHeaders();
+    return this.http.post(`${this.API_URL}/visitors`, data, {
       headers
     });
   }

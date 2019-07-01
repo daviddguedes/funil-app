@@ -14,7 +14,7 @@ import { ApiService } from "./../../services/api/api.service";
 export class OpportunitiesComponent implements OnInit {
   imgPlaceholder: string = "https://via.placeholder.com/500";
   uploadResponse = { status: "", message: "", filePath: "" };
-  @ViewChild('basicModal', {static: true}) basicModal: ElementRef;
+  @ViewChild('basicModal', {static: false}) basicModal: ElementRef;
 
   opportunitieForm = this.fb.group({
     title: [null, Validators.required],
@@ -63,6 +63,7 @@ export class OpportunitiesComponent implements OnInit {
       response => {
         this.opportunitieForm.reset();
         this.basicModal.show();
+
       },
       error => {
         console.log("error", error);

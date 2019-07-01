@@ -13,6 +13,9 @@ import { SalesComponent } from "./components/sales/sales.component";
 import { VisitorsComponent } from "./components/visitors/visitors.component";
 import { ApiService } from './services/api/api.service';
 
+import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
+import { DynamicFormQuestionComponent } from "./components/dynamic-form-question/dynamic-form-question.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,9 @@ import { ApiService } from './services/api/api.service';
     NavbarComponent,
     OpportunitiesComponent,
     SalesComponent,
-    VisitorsComponent
+    VisitorsComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent
   ],
   imports: [
     BrowserModule,

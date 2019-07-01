@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Exception;
-use App\Models\Opportunitie;
 
-class OpportunitiesController extends Controller
+class SalesOpportunitieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,8 @@ class OpportunitiesController extends Controller
     {
         //
     }
-    
-    
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -28,27 +25,9 @@ class OpportunitiesController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'thumbUrl' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-        
-        try {            
-            $opportunitie = Opportunitie::create($request->except('thumbUrl'));
-            
-            $path = $request->file('thumbUrl')->store('');
-            $storagePath  = Storage::disk('public')->url($path);
-            
-            $opportunitie->thumbUrl = $path;
-            $saved = $opportunitie->save();            
-            
-            return response()->json([
-                'result' => $opportunitie
-            ]);
-        } catch (Exception $e) {
-            return response()->json(['error' => 'An error ocurred.'], 400);
-        };
+        //
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -59,8 +38,8 @@ class OpportunitiesController extends Controller
     {
         //
     }
-    
-    
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -72,7 +51,7 @@ class OpportunitiesController extends Controller
     {
         //
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
